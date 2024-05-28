@@ -3,5 +3,10 @@
   <%= @post.body %>
 </div>
 <br>
+<h2>Total Comments:   <%= @post.comments.count %></h2>
+  <%= render @post.comments %>
+  <h3>Leave a comment!  </h3>
+  <%= render 'comments/form' %>
+<br>
 <%= link_to "Edit Post" ,edit_post_path(@post)%>
 <%= button_to "Delete",post_path(@post),method: :delete, data: { confirm: "Are you sure?"}%>

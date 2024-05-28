@@ -1,0 +1,5 @@
+<p><%= comment.name%> : <%= comment.body%></p>
+<p>Posted: <%= time_ago_in_words(comment.created_at)%> ago</p>
+<p><%= button_to "Delete",[comment.post,comment],method: :delete, data: { confirm: "Are you sure?"}%></p>
+
+<h1>-----------------------------------------------------------------------------------------------------------</h1>
