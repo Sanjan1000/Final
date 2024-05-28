@@ -1,5 +1,7 @@
 <p><%= comment.name%> : <%= comment.body%></p>
 <p>Posted: <%= time_ago_in_words(comment.created_at)%> ago</p>
-<p><%= button_to "Delete",[comment.post,comment],method: :delete, data: { confirm: "Are you sure?"}%></p>
+<% if user_signed_in? %>
+    <p><%= button_to "Delete",[comment.post,comment],method: :delete, data: { confirm: "Are you sure?"}%></p>
+<% end %>
 
 <h1>-----------------------------------------------------------------------------------------------------------</h1>
