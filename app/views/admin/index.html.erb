@@ -4,6 +4,8 @@
       <%= f.text_field :email %> - 
       <%= f.select(:role, User.roles.keys.map { |w| [w.humanize, w] }) %> - 
       <%= f.submit "Update" %> - 
+      <%= link_to 'Block', block_admin_path(user), method: :post, data: { confirm: 'Are you sure?' } unless user.blocked? %>
+      <%= link_to 'Unblock', unblock_admin_path(user), method: :post, data: { confirm: 'Are you sure?' } if user.blocked? %>
       <%= link_to 'Delete', admin_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
   <% end %>

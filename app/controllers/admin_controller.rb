@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :set_user, only: [:update, :destroy]
+  before_action :set_user, only: [:update, :destroy, :block, :unblock]
   before_action :authenticate_user!
   before_action :authorize_admin!
 
@@ -20,6 +20,23 @@ class AdminController < ApplicationController
     redirect_to admin_index_path, notice: 'User was successfully deleted.'
   end
 
+  def block
+    if @user.update(blocked: true)
+      redirect_to admin_index_path, notice: 'User was successfully blocked.'
+    else
+      redirect_to admin_index_path, alert: 'Unable to block user.'
+    end
+  end
+
+  def unblock
+    if @user.update(blocked: false)
+      redirect_to admin_index_path, notice: 'User was successfully unblocked.'
+    else
+      redirect_to admin_index_path, alert: 'Unable to unblock user.'
+    end
+  end
+
+
   private
 
   def authorize_admin!
@@ -27,7 +44,7 @@ class AdminController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:role, :blocked)
   end
 
   def set_user
