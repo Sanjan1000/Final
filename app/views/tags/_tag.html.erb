@@ -1,0 +1,16 @@
+<div id="<%= dom_id(tag) %>">
+  <p>
+    <strong>Name:</strong>
+    <%= tag.name %>
+  </p>
+
+  <h2>Items:</h2>
+  <% tag.taggables.each do |taggable| %>
+    <div class="nested-post">
+      <h3><%= taggable.nested_post.title %></h3>
+      <p><%= taggable.nested_post.body %></p>
+      <%= link_to 'Read More', post_path(taggable.nested_post.post, taggable.nested_post) %>
+      <hr />
+    </div>
+  <% end %>
+</div>
