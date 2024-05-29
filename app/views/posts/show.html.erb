@@ -20,13 +20,21 @@
   <% end %>
 <% end %>
 
-<h2>List of Items:</h2>
-<% @post.nested_posts.each do |nested_post| %>
-  <div>
-    <h3><%= nested_post.title %></h3>
-    <p><%= nested_post.body %></p>
-  </div>
-<% end %>
+<h2>List of Items: </h2>
+<ul>
+  <% @post.nested_posts.each do |nested_post| %>
+    <li>
+      <%= nested_post.title %>
+      <br>
+      <%= nested_post.body %>
+      <% if user_signed_in? %>
+      <br>
+        <%= link_to 'Edit', edit_post_nested_post_path(@post, nested_post) %>
+        <%= button_to 'Delete', post_nested_post_path(@post, nested_post), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to 'Back', posts_path %>
 <br>

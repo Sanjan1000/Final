@@ -1,29 +1,15 @@
-<%= form_with(model: [ @post, @nested_post ], url: post_nested_posts_path(@post)) do |form| %>
-  <% if @nested_post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@nested_post.errors.count, "error") %> prohibited this nested post from being saved:</h2>
-      <ul>
-        <% @nested_post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-<br>
+<%= form_with(model: [@post, @nested_post]) do |form| %>
   <div class="field">
     <%= form.label :title %>
-    <br>
     <%= form.text_field :title %>
   </div>
-<br>
+
   <div class="field">
     <%= form.label :body %>
-    <br>
     <%= form.text_area :body %>
   </div>
-<br>
+
   <div class="actions">
-    <%= form.submit 'Create' %>
+    <%= form.submit 'Create'  %>
   </div>
-  <br>
 <% end %>
