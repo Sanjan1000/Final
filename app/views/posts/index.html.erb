@@ -1,7 +1,7 @@
 <% @posts.each do |post| %>
     <h2><%=post.title%></h2>
     <div>  <%= truncate(post.body, :length =>25) %> </div>
-    <%= link_to 'Read Posts', post %>
+    <%= link_to 'See the full collection', post %>
 <% end %>
 
 

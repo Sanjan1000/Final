@@ -4,11 +4,11 @@
 </div>
 
 <% if user_signed_in? %>
-    <%= link_to "Edit Post" ,edit_post_path(@post)%>
+    <%= link_to "Edit Collections" ,edit_post_path(@post)%>
     <%= button_to "Delete",post_path(@post),method: :delete, data: { confirm: "Are you sure?"}%>
-    <%= link_to 'Add Nested Post', new_post_nested_post_path(@post) %>
+    <%= link_to 'Add Items', new_post_nested_post_path(@post) %>
 <% end %>
-<h2>Nested Posts:</h2>
+<h2>List of Items:</h2>
 <% @post.nested_posts.each do |nested_post| %>
   <div>
     <h3><%= nested_post.title %></h3>

@@ -8,7 +8,7 @@ class NestedPostsController < ApplicationController
   def create
     @nested_post = @post.nested_posts.build(nested_post_params)
     if @nested_post.save
-      redirect_to @post, notice: 'Nested post was successfully created.'
+      redirect_to @post, notice: 'Item was successfully created.'
     else
       render :new
     end
