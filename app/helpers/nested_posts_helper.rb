@@ -1,0 +1,2 @@
+module NestedPostsHelper
+end

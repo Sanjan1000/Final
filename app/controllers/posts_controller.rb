@@ -16,8 +16,8 @@ class PostsController < ApplicationController
     end
   end
   def show 
-    
-
+    @post = Post.find(params[:id])
+    @nested_post = NestedPost.new(post: @post)
   end
   def edit
     
