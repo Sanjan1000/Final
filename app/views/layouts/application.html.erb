@@ -11,16 +11,16 @@
   </head>
 
   <body>
+    <%= link_to 'Home', root_path %>
     <% if !user_signed_in? %>
-    <p class="sign_in"><%= link_to "Login", new_user_session_path %></p>
+      <p class="sign_in"><%= link_to "Login", new_user_session_path %></p>
     <% end %>
     <% if user_signed_in? %>
-      <div class="button">
-         <button class="button"><%=link_to "New Post",new_post_path%></button>
-         <button class="button"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </button>  
-         </div>
+      <%=link_to "New Post",new_post_path%>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      <%= link_to 'Admin', admin_index_path if current_user.admin? %> | 
     <% end %>
-    <%= link_to 'Home', root_path %>
+    
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
