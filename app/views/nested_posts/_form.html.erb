@@ -9,18 +9,21 @@
       </ul>
     </div>
   <% end %>
-
+<br>
   <div class="field">
     <%= form.label :title %>
+    <br>
     <%= form.text_field :title %>
   </div>
-
+<br>
   <div class="field">
     <%= form.label :body %>
+    <br>
     <%= form.text_area :body %>
   </div>
-
+<br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Create' %>
   </div>
+  <br>
 <% end %>

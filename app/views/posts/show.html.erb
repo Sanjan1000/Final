@@ -2,12 +2,24 @@
 <div>
   <%= @post.body %>
 </div>
-
+<br>
 <% if user_signed_in? %>
     <%= link_to "Edit Collections" ,edit_post_path(@post)%>
+    <br>
     <%= button_to "Delete",post_path(@post),method: :delete, data: { confirm: "Are you sure?"}%>
+    <br>
     <%= link_to 'Add Items', new_post_nested_post_path(@post) %>
 <% end %>
+<br>
+<p>Likes: <%= @post.likes.count %></p>
+<% if user_signed_in? %>
+  <% if @post.likes.where(user_id: current_user.id).exists? %>
+    <%= button_to 'Unlike', post_like_path(@post, @post.likes.find_by(user_id: current_user.id)), method: :delete %>
+  <% else %>
+    <%= button_to 'Like', post_likes_path(@post), method: :post %>
+  <% end %>
+<% end %>
+
 <h2>List of Items:</h2>
 <% @post.nested_posts.each do |nested_post| %>
   <div>

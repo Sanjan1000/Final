@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     resources :nested_posts, only: [:new, :create]
+    resources :likes, only: [:create, :destroy]
   end
   root 'posts#index'
   resources :admin, only: [:index, :update, :destroy]
