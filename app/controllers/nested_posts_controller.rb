@@ -24,7 +24,7 @@ class NestedPostsController < ApplicationController
     update_nested_post_tags(@nested_post, params[:nested_post][:tags])
 
     if @nested_post.update(nested_post_params.except(:tags))
-      redirect_to post_path(@post), notice: 'Nested post was successfully updated.'
+      redirect_to post_path(@post), notice: 'Item was successfully updated.'
     else
       render :edit
     end
