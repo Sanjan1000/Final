@@ -15,9 +15,9 @@
       <p class="sign_in"><%= link_to "Login", new_user_session_path %></p>
     <% end %>
     <% if user_signed_in? %>
-      <%=link_to "New Collections",new_post_path%>
       <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-      <%= link_to 'Admin', admin_index_path if current_user.admin? %> | 
+      <%= link_to 'Admin Dashboard', admin_index_path if current_user.admin? %>
+      <%= link_to 'User management', posts_path %> 
     <% end %>
     
     <p class="notice"><%= notice %></p>

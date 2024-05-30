@@ -1,5 +1,14 @@
 <p style="color: green"><%= notice %></p>
-
+<h1>Items tagged with "<%= @tag.name %>"</h1>
+<ul>
+  <% @tagged_items.each do |item| %>
+    <li>
+      <strong>Name:</strong> <%= item.title %><br>
+      <strong>Post:</strong> <%= link_to item.post.title, post_path(item.post) %><br>
+      
+    </li>
+  <% end %>
+</ul>
 <%= render @tag %>
 <% if user_signed_in? %>
   <div>

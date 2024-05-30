@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
+  has_many :posts
 
   # Check if the user is active for authentication (not blocked)
   def active_for_authentication?

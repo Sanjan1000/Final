@@ -1,10 +1,11 @@
-<h2><%= @post.title %></h2>
+
 <div>
+  <h2><%= @post.title %></h2>
   <%= @post.body %>
 </div>
 <br>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && (@post.user == current_user || current_user.admin?) %>
   <%= link_to "Edit Collections", edit_post_path(@post) %>
   <br>
   <%= button_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
@@ -21,15 +22,15 @@
     <%= button_to 'Like', post_likes_path(@post), method: :post %>
   <% end %>
 <% end %>
-
-<h2>List of Items: </h2>
+<hr>
+<h2>List of Items:</h2>
 <ul>
   <% @post.nested_posts.each do |nested_post| %>
     <li>
       <%= nested_post.title %>
       <br>
       <%= nested_post.body %>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && (nested_post.user_id == current_user.id || current_user.admin?) %>
         <br>
         <%= link_to 'Edit', edit_post_nested_post_path(@post, nested_post) %>
         <%= button_to 'Delete', post_nested_post_path(@post, nested_post), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -38,19 +39,19 @@
   <% end %>
 </ul>
 
-<strong>Tags: </strong>
+<strong>Tags:</strong>
 <% @post.nested_posts.each do |nested_post| %>
   <% nested_post.tags.each do |tag| %>
     <%= link_to tag.name.capitalize, tag_path(tag), class: "tag" %>
   <% end %>
 <% end %>
-
+<br>
 <%= link_to 'Back', posts_path %>
 <br>
+<hr>
 <h2>Total Comments: <%= @post.comments.count %></h2>
 <%= render @post.comments %>
 <% if user_signed_in? %>
-  <h3>Leave a comment!</h3>
   <%= render 'comments/form' %>
 <% end %>
 <br>

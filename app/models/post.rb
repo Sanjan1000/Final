@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  belongs_to :user
   has_many :comments
   has_many :nested_posts, dependent: :destroy
   has_many :likes, dependent: :destroy

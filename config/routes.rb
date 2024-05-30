@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       post :unblock
     end
   end
-  root 'posts#index'
+  root 'home#index'
   resources :admin, only: [:index, :update, :destroy]
   
 

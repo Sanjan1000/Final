@@ -1,0 +1,29 @@
+<h1>Welcome to the Home Page</h1>
+
+<h2>Latest Items</h2>
+<ul>
+  <% @latest_items.each do |item| %>
+    <li>
+      <strong>Item: </strong> <%= item.title %><br>
+      <strong>Posted from: </strong> <%= link_to item.post.title, post_path(item.post) %><br>
+      
+    </li>
+  <% end %>
+</ul>
+
+<h2>Top 5 Largest Posts</h2>
+<ul>
+  <% @top_posts.each do |post| %>
+    <li>
+      <strong>Title:</strong> <%= link_to post.title, post_path(post) %><br>
+      <strong>Number of Items:</strong> <%= post.nested_posts.count %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Tag Cloud</h2>
+<div class="tag-cloud">
+  <% @tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag), class: "tag" %>
+  <% end %>
+</div>
