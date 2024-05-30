@@ -1,4 +1,3 @@
-
 <div>
   <h2><%= @post.title %></h2>
   <%= @post.body %>
@@ -30,7 +29,7 @@
       <%= nested_post.title %>
       <br>
       <%= nested_post.body %>
-      <% if user_signed_in? && (nested_post.user_id == current_user.id || current_user.admin?) %>
+      <% if user_signed_in? && (nested_post.user == current_user || current_user.admin?) %>
         <br>
         <%= link_to 'Edit', edit_post_nested_post_path(@post, nested_post) %>
         <%= button_to 'Delete', post_nested_post_path(@post, nested_post), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -46,7 +45,6 @@
   <% end %>
 <% end %>
 <br>
-<%= link_to 'Back', posts_path %>
 <br>
 <hr>
 <h2>Total Comments: <%= @post.comments.count %></h2>

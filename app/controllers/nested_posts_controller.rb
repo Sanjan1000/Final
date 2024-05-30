@@ -1,6 +1,8 @@
 class NestedPostsController < ApplicationController
+  
   before_action :find_post
   before_action :set_nested_post, only: [:edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def new
     @nested_post = @post.nested_posts.build
@@ -8,6 +10,7 @@ class NestedPostsController < ApplicationController
 
   def create
     @nested_post = @post.nested_posts.build(nested_post_params.except(:tags))
+    @nested_post.user = current_user  # Assign the current user
     update_nested_post_tags(@nested_post, params[:nested_post][:tags])
 
     if @nested_post.save
@@ -36,6 +39,12 @@ class NestedPostsController < ApplicationController
   end
 
   private
+
+  def authorize_user!
+    unless @nested_post.user == current_user || current_user.admin?
+      redirect_to post_path(@post), alert: 'You are not authorized to perform this action.'
+    end
+  end
 
   def update_nested_post_tags(nested_post, tags)
     nested_post.tags.clear

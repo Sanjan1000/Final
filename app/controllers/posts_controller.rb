@@ -1,14 +1,18 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_post, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!
 
   def index
     if current_user.admin?
       @posts = Post.all.order("created_at DESC")
     else
       @posts = current_user.posts.order("created_at DESC")
-    
     end
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @nested_post = NestedPost.new(post: @post)
   end
 
   def new
@@ -22,11 +26,6 @@ class PostsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def show
-    @post = Post.find(params[:id])
-    @nested_post = NestedPost.new(post: @post)
   end
 
   def edit
