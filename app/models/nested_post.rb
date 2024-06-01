@@ -1,5 +1,5 @@
 class NestedPost < ApplicationRecord
-  enum topic: { books: 0, signs: 1, silverware: 2, other: 3 }
+  
   belongs_to :post
   belongs_to :user
   has_many :taggables, dependent: :destroy

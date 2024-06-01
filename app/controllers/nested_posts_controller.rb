@@ -65,6 +65,6 @@ class NestedPostsController < ApplicationController
   end
 
   def nested_post_params
-    params.require(:nested_post).permit(:title, :body, :topic, :tags)
+    params.require(:nested_post).permit(:title, :body, :tags)
   end
 end

@@ -13,10 +13,7 @@
     <%= form.label :tags, 'Tags (comma separated)' %>
     <%= form.text_field :tags, value: @nested_post.tags.map(&:name).join(",") %>
   </div>
-  <div class="field">
-    <%= form.label :topic %>
-    <%= form.select :topic, NestedPost.topics.keys.map { |topic| [topic.capitalize, topic] } %>
-  </div>
+  
   <div class="actions">
     <%= form.submit 'Create' %>
   </div>

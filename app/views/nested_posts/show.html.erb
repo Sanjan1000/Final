@@ -1,7 +1,7 @@
 <div>
   <h2><%= @nested_post.title %></h2>
   <p><%= @nested_post.body %></p>
-  <p>Topic: <%= @nested_post.topic.humanize %></p>
+  
   <p>Posted by <%= @nested_post.user.email %> <%= time_ago_in_words(@nested_post.created_at) %> ago</p>
 
   <% if user_signed_in? && (@nested_post.user == current_user || current_user.admin?) %>

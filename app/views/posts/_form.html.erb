@@ -7,6 +7,10 @@
   <br>
   <%= f.text_area :body, id: "markdown-editor" %>
   <br>
+  <div class="field">
+    <%= f.label :topic %>
+    <%= f.select :topic, Post.topics.keys.map { |topic| [topic.capitalize, topic] } %>
+  </div>
   <%= f.submit 'Create' %>  
 <% end %>
 

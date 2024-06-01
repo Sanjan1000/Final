@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_01_160949) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_01_182927) do
   create_table "comments", force: :cascade do |t|
     t.string "name"
     t.text "body"
@@ -36,7 +36,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_160949) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "topic"
     t.index ["post_id"], name: "index_nested_posts_on_post_id"
   end
 
@@ -46,6 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_160949) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "topic"
   end
 
   create_table "taggables", force: :cascade do |t|
