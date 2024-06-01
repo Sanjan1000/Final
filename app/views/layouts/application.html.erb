@@ -7,6 +7,8 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    
   </head>
 
   <body>
@@ -23,5 +25,6 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
   </body>
 </html>

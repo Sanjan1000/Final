@@ -3,11 +3,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:edit, :update, :destroy]
 
   def index
-    if current_user.admin?
-      @posts = Post.all.order("created_at DESC")
-    else
-      @posts = current_user.posts.order("created_at DESC")
-    end
+    @posts = current_user.admin? ? Post.all.order("created_at DESC") : current_user.posts.order("created_at DESC")
   end
 
   def show
@@ -47,11 +43,7 @@ class PostsController < ApplicationController
   private
 
   def find_post
-    if current_user.admin?
-      @post = Post.find(params[:id])
-    else
-      @post = current_user.posts.find(params[:id])
-    end
+    @post = current_user.admin? ? Post.find(params[:id]) : current_user.posts.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "Post not found."
   end

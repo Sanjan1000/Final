@@ -1,8 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comments, dependent: :destroy
   has_many :nested_posts, dependent: :destroy
-  has_many :likes, dependent: :destroy
+
   has_many :liked_users, through: :likes, source: :user
 
   ransacker :title_or_body_cont, formatter: proc { |v| v } do |parent|

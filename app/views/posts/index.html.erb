@@ -1,10 +1,5 @@
 <h2>User management for <%=current_user.email%></h2>
 <%=link_to "New Collections",new_post_path%>
 <% @posts.each do |post| %>
-    <h2><%=post.title%></h2>
-    <div>  <%= truncate(post.body, :length =>25) %> </div>
-    <%= link_to 'See the full collection', post %>
+<h2><%= link_to post.title, post %></h2>
 <% end %>
-
-
-

@@ -1,12 +1,17 @@
 <%= form_for @post do |f| %>
-    <%= f.label :title ,"Name" %>
-    <br>
-    <%= f.text_field :title %>
-    <br>
-    <br>
-     <%= f.label :body, "Description"%>
-    <br>
-    <%= f.text_area :body %>
-    <br>
-    <%= f.submit 'Create' %>  <br>
+  <%= f.label :title, "Name" %>
+  <br>
+  <%= f.text_field :title %>
+  <br><br>
+  <%= f.label :body, "Description" %>
+  <br>
+  <%= f.text_area :body, id: "markdown-editor" %>
+  <br>
+  <%= f.submit 'Create' %>  
 <% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    new SimpleMDE({ element: document.getElementById("markdown-editor") });
+  });
+</script>

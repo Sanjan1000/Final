@@ -1,0 +1,55 @@
+<div>
+  <h2><%= @nested_post.title %></h2>
+  <p><%= @nested_post.body %></p>
+  <p>Posted by <%= @nested_post.user.email %> <%= time_ago_in_words(@nested_post.created_at) %> ago</p>
+
+  <% if user_signed_in? && (@nested_post.user == current_user || current_user.admin?) %>
+    <%= link_to 'Edit', edit_post_nested_post_path(@nested_post.post, @nested_post) %> |
+    <%= button_to 'Delete', post_nested_post_path(@nested_post.post, @nested_post), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
+  <br>
+  <p>Likes: <%= @nested_post.likes.count %></p>
+  <% if user_signed_in? %>
+    <% if @nested_post.likes.where(user_id: current_user.id).exists? %>
+      <%= button_to 'Unlike', post_nested_post_like_path(@nested_post.post, @nested_post, @nested_post.likes.find_by(user_id: current_user.id)), method: :delete %>
+    <% else %>
+      <%= button_to 'Like', post_nested_post_likes_path(@nested_post.post, @nested_post), method: :post %>
+    <% end %>
+  <% end %>
+  <hr>
+
+  <strong>Tags:</strong>
+  <% @nested_post.tags.each do |tag| %>
+    <%= link_to tag.name.capitalize, tag_path(tag), class: "tag" %>
+  <% end %>
+  <br>
+  <p>Total Comments: <%= @comments.count %></p>
+
+<div id="comments">
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <p><%= comment.name %>: <%= comment.body %></p>
+      <p>Posted: <%= time_ago_in_words(comment.created_at) %> ago</p>
+    </div>
+  <% end %>
+</div>
+<% if user_signed_in?%>
+  <h2>New Comment</h2>
+  <%= form_for([@nested_post, @nested_post.comments.build]) do |f| %>
+    <p>
+      <%= f.label :name, "User name: " %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :body, "Leave a comment! " %><br>
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+
+  <% end %>
+
+</div>
