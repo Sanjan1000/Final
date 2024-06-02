@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'search', to: 'search#index'
-
+  patch '/update_theme', to: 'application#update_theme'
   resources :tags
   devise_for :users
   devise_scope :user do

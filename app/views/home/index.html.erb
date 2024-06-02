@@ -1,5 +1,10 @@
-<br> 
-<h1>Welcome to the Home Page </h1>
+
+<% if user_signed_in?%>
+  <h1>Welcome to the Home Page <%=current_user.email%></h1>
+<%else%>
+  <h1>Welcome to the Home Page</h1>
+<% end %>
+
 <br>
 <h2>Latest Items</h2>
 <ul>
@@ -26,7 +31,7 @@
 <br>
 <ul>
   <% @top_posts.each do |post| %>
-   <div class="d-inline-flex p-2 card text-black bg-light mb-3" style="max-width: 20rem;">
+   <div class="d-inline-flex p-2 card border-primary mb-3" style="max-width: 20rem;">
   <div class="card-header">Header</div>
   <div class="card-body">
     <h4 class="card-title"><strong>Title:</strong > <%= link_to post.title, post_path(post),style: "text-decoration: none;" %></h4>
@@ -40,7 +45,7 @@
 <br>
 <div class="tag-cloud">
   <% @tags.each do |tag| %>
-  <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-bs-original-title="Popover Title" aria-describedby="popover601591"><%= link_to tag.name, tag_path(tag), class: "tag",style: "text-decoration: none;" %></button>
+  <button type="button" class="d-inline-flex p-2 card border-primary mb-3" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-bs-original-title="Popover Title" aria-describedby="popover601591"><%= link_to tag.name, tag_path(tag), class: "tag",style: "text-decoration: none;" %></button>
   <% end %>
 <br>
 <br>
