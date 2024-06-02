@@ -1,4 +1,4 @@
-<%= search_form_for(@q, url: search_path, method: :get) do |f| %>
-  <%= f.search_field :title_or_body_cont, placeholder: "Search title or body..." %>
-  <%= f.submit "Search!" %>
+<%= search_form_for(@q, url: search_path, method: :get, html: { class: "d-flex" }) do |f| %>
+  <%= f.search_field :title_or_body_cont, class: "form-control me-sm-2", placeholder: "Search title or body..." %>
+  <%= f.submit "Search!", class: "btn btn-secondary my-2 my-sm-0" %>
 <% end %>

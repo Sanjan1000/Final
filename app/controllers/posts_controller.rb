@@ -49,6 +49,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :topic)
+    params.require(:post).permit(:title, :body, :topic, :integer_field1, :integer_field2, :integer_field3, :string_field1, :string_field2, :string_field3, :multiline_text1, :multiline_text2, :multiline_text3, :boolean_field1, :boolean_field2, :boolean_field3, :date_field1, :date_field2, :date_field3)
   end
 end

@@ -1,12 +1,21 @@
-<% @users.each do |user| %>
+<ul class="list-group">
+  
+    <% @users.each do |user| %>
   <%= form_for(user, url: admin_path(user), remote: true, method: :patch) do |f| %>
     <p>
-      <%= f.text_field :email %> - 
-      <%= f.select(:role, User.roles.keys.map { |w| [w.humanize, w] }) %> - 
-      <%= f.submit "Update" %> - 
-      <%= link_to 'Block', block_admin_path(user), method: :post, data: { confirm: 'Are you sure?' } unless user.blocked? %>
-      <%= link_to 'Unblock', unblock_admin_path(user), method: :post, data: { confirm: 'Are you sure?' } if user.blocked? %>
-      <%= link_to 'Delete', admin_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">
+      <%= f.text_field :email %> 
+      <%= f.select(:role, User.roles.keys.map { |w| [w.humanize, w] }) %> 
+      <%= f.submit "Update" %> 
+     <span class="badge bg-warning"><%= link_to 'Block', block_admin_path(user), style: "text-decoration: none; color: white;", method: :post, data: { confirm: 'Are you sure?' } unless user.blocked? %>
+      <%= link_to 'Unblock', unblock_admin_path(user), style: "text-decoration: none; color: white;", method: :post, data: { confirm: 'Are you sure?' } if user.blocked? %></span>
+      <span class="badge bg-danger"><%= link_to 'Delete', admin_path(user), style: "text-decoration: none; color: white;", method: :delete, data: { confirm: 'Are you sure?' } %></span>
     </p>
+    
+  </li>
   <% end %>
 <% end %>
+    
+  
+</ul>
+

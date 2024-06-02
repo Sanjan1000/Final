@@ -1,29 +1,48 @@
-<h1>Welcome to the Home Page</h1>
-<%= link_to 'Search', search_path %>
+<br> 
+<h1>Welcome to the Home Page </h1>
+<br>
 <h2>Latest Items</h2>
 <ul>
   <% @latest_items.each do |item| %>
-    <li>
-      <strong>Item: </strong> <%= item.title %><br>
-      <strong>Posted from: </strong> <%= link_to item.post.title, post_path(item.post) %><br>
-      
-    </li>
+  <div class="d-inline-flex p-2 card border-primary mb-3" style="max-width: 30rem;">
+  <div class="card-header"><p>Topic: <%= item.post.topic.humanize %></p></div>
+  <div class="card-body">
+    <h4 class="card-title"><strong>Item: </strong> <%= item.title %></h4>
+    <p class="card-text"><strong>Posted from: </strong> <%= link_to item.post.title, post_path(item.post),style: "text-decoration: none;" %>
+    <br>
+    <br>
+    <strong>Tags: </strong><% item.tags.each do |tag| %>
+    <%= link_to tag.name.capitalize, tag_path(tag), class: "tag" %>
+  <% end %>
+  <br>
+    </p>
+  </div>
+</div>
   <% end %>
 </ul>
-
+<br>
+<br>
 <h2>Top 5 Largest Posts</h2>
+<br>
 <ul>
   <% @top_posts.each do |post| %>
-    <li>
-      <strong>Title:</strong> <%= link_to post.title, post_path(post) %><br>
-      <strong>Number of Items:</strong> <%= post.nested_posts.count %>
-    </li>
+   <div class="d-inline-flex p-2 card text-black bg-light mb-3" style="max-width: 20rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h4 class="card-title"><strong>Title:</strong > <%= link_to post.title, post_path(post),style: "text-decoration: none;" %></h4>
+    <p class="card-text"><strong>Number of Items:</strong> <%= post.nested_posts.count %></p>
+  </div>
+</div>
   <% end %>
 </ul>
-
+<br>
 <h2>Tag Cloud</h2>
+<br>
 <div class="tag-cloud">
   <% @tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag), class: "tag" %>
+  <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-bs-original-title="Popover Title" aria-describedby="popover601591"><%= link_to tag.name, tag_path(tag), class: "tag",style: "text-decoration: none;" %></button>
   <% end %>
+<br>
+<br>
+
 </div>

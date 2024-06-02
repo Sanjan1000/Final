@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_01_182927) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_01_203705) do
   create_table "comments", force: :cascade do |t|
     t.string "name"
     t.text "body"
@@ -46,6 +46,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_182927) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "topic"
+    t.integer "integer_field1"
+    t.integer "integer_field2"
+    t.integer "integer_field3"
+    t.string "string_field1"
+    t.string "string_field2"
+    t.string "string_field3"
+    t.text "multiline_text1"
+    t.text "multiline_text2"
+    t.text "multiline_text3"
+    t.boolean "boolean_field1"
+    t.boolean "boolean_field2"
+    t.boolean "boolean_field3"
+    t.date "date_field1"
+    t.date "date_field2"
+    t.date "date_field3"
   end
 
   create_table "taggables", force: :cascade do |t|
