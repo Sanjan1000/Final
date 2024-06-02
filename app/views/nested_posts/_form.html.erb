@@ -1,20 +1,24 @@
 <%= form_with(model: [@post, @nested_post]) do |form| %>
   <div class="field">
     <%= form.label :title %>
+    <br>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
     <%= form.label :body %>
+    <br>
     <%= form.text_area :body %>
   </div>
 
   <div class="field">
     <%= form.label :tags, 'Tags (comma separated)' %>
+    <br>
     <%= form.text_field :tags, value: @nested_post.tags.map(&:name).join(",") %>
   </div>
   
   <div class="actions">
+    <br>
     <%= form.submit 'Create' %>
   </div>
 <% end %>

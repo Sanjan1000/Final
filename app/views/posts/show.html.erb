@@ -2,14 +2,14 @@
 <p><%= markdown(@post.body) %></p>
 <p>Topic: <%= @post.topic.humanize %></p>
 <% if user_signed_in? && (@post.user == current_user || current_user.admin?) %>
-  <%= link_to "Edit Post", edit_post_path(@post) %>
-  <%= button_to "Delete Post", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
-  <%= link_to 'Add Nested Post', new_post_nested_post_path(@post) %>
+  <%= link_to "Edit Item", edit_post_path(@post) %>
+  <%= button_to "Delete Item", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= link_to 'Add New Item', new_post_nested_post_path(@post) %>
 <% end %>
 
 
 
-<h2>Nested Posts</h2>
+<h2>Items</h2>
 <ul>
   <% @post.nested_posts.each do |nested_post| %>
     <li>
