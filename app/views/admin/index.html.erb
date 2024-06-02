@@ -6,7 +6,9 @@
       <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">
       <%= f.text_field :email %> 
       <%= f.select(:role, User.roles.keys.map { |w| [w.humanize, w] }) %> 
-      <%= f.submit "Update" %> 
+      <%= f.button class: 'btn btn-primary' do %>
+        <i class="bi bi-arrow-clockwise"></i> 
+      <% end %>
      <span class="badge bg-warning"><%= link_to 'Block', block_admin_path(user), style: "text-decoration: none; color: white;", method: :post, data: { confirm: 'Are you sure?' } unless user.blocked? %>
       <%= link_to 'Unblock', unblock_admin_path(user), style: "text-decoration: none; color: white;", method: :post, data: { confirm: 'Are you sure?' } if user.blocked? %></span>
       <span class="badge bg-danger"><%= link_to 'Delete', admin_path(user), style: "text-decoration: none; color: white;", method: :delete, data: { confirm: 'Are you sure?' } %></span>

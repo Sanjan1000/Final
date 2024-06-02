@@ -1,5 +1,16 @@
 <h2>User management for <%=current_user.email%></h2>
-<%=link_to "New Collections",new_post_path%>
-<% @posts.each do |post| %>
-<h2><%= link_to post.title, post %></h2>
+<%=link_to new_post_path do%>
+
+<span class="badge bg-success"><i class="bi bi-collection"> New Collections</i></span>
 <% end %>
+
+
+<div class="d-inline-flex p-2 card border-primary mb-3" style="max-width: 30rem;">
+  <div class="card-header">Collection</div>
+  <div class="card-body">
+    <h4 class="card-title"><% @posts.each do |post| %>
+<h2><%= link_to post.title, post , style: "text-decoration: none;"%></h2>
+<% end %></h4>
+    
+  </div>
+</div>
