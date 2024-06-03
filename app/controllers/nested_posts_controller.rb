@@ -40,7 +40,7 @@ class NestedPostsController < ApplicationController
 
   def destroy
     @nested_post.destroy
-    redirect_to post_path(@post), notice: 'Nested post was successfully destroyed.'
+    redirect_to post_path(@post), notice: 'Item was successfully destroyed.'
   end
 
   private
