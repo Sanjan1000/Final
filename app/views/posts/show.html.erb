@@ -46,15 +46,15 @@
 
 <!-- Boolean Fields -->
 <% if @post.boolean_field1.present? %>
-  <p>Boolean Field 1: <%= @post.boolean_field1 ? 'True' : 'False' %></p>
+  <p><%= @post.boolean_field1_text %> : <%= @post.boolean_field1 ? 'True' : 'False' %></p>
 <% end %>
 
 <% if @post.boolean_field2.present? %>
-  <p>Boolean Field 2: <%= @post.boolean_field2 ? 'True' : 'False' %></p>
+  <p><%= @post.boolean_field2_text%> : <%= @post.boolean_field2 ? 'True' : 'False' %></p>
 <% end %>
 
 <% if @post.boolean_field3.present? %>
-  <p>Boolean Field 3: <%= @post.boolean_field3 ? 'True' : 'False' %></p>
+  <p><%= @post.boolean_field3_text %> : <%= @post.boolean_field3 ? 'True' : 'False' %></p>
 <% end %>
 
 <!-- Date Fields -->
