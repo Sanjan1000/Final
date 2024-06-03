@@ -1,7 +1,74 @@
 <div>
   <h2><%= @nested_post.title %></h2>
   <p><%= @nested_post.body %></p>
-  
+   <!-- Add the post fields here -->
+  <% if @nested_post.post.integer_field1.present? %>
+    <p>Integer Field 1: <%= @nested_post.post.integer_field1 %></p>
+  <% end %>
+
+  <% if @nested_post.post.integer_field2.present? %>
+    <p>Integer Field 2: <%= @nested_post.post.integer_field2 %></p>
+  <% end %>
+
+  <% if @nested_post.post.integer_field3.present? %>
+    <p>Integer Field 3: <%= @nested_post.post.integer_field3 %></p>
+  <% end %>
+
+  <!-- String Fields -->
+  <% if @nested_post.post.string_field1.present? %>
+    <p>String Field 1: <%= @nested_post.post.string_field1 %></p>
+  <% end %>
+
+  <% if @nested_post.post.string_field2.present? %>
+    <p>String Field 2: <%= @nested_post.post.string_field2 %></p>
+  <% end %>
+
+  <% if @nested_post.post.string_field3.present? %>
+    <p>String Field 3: <%= @nested_post.post.string_field3 %></p>
+  <% end %>
+
+  <!-- Multiline Text Fields -->
+  <% if @nested_post.post.multiline_text1.present? %>
+    <p>Multiline Text 1:</p>
+    <p><%= @nested_post.post.multiline_text1 %></p>
+  <% end %>
+
+  <% if @nested_post.post.multiline_text2.present? %>
+    <p>Multiline Text 2:</p>
+    <p><%= @nested_post.post.multiline_text2 %></p>
+  <% end %>
+
+  <% if @nested_post.post.multiline_text3.present? %>
+    <p>Multiline Text 3:</p>
+    <p><%= @nested_post.post.multiline_text3 %></p>
+  <% end %>
+
+  <!-- Boolean Fields -->
+  <% if @nested_post.post.boolean_field1.present? %>
+    <p><%= @nested_post.post.boolean_field1_text %>: <%= @nested_post.post.boolean_field1 ? 'True' : 'False' %></p>
+  <% end %>
+
+  <% if @nested_post.post.boolean_field2.present? %>
+    <p><%= @nested_post.post.boolean_field2_text %>: <%= @nested_post.post.boolean_field2 ? 'True' : 'False' %></p>
+  <% end %>
+
+  <% if @nested_post.post.boolean_field3.present? %>
+    <p><%= @nested_post.post.boolean_field3_text %>: <%= @nested_post.post.boolean_field3 ? 'True' : 'False' %></p>
+  <% end %>
+
+  <!-- Date Fields -->
+  <% if @nested_post.post.date_field1.present? && @nested_post.post.date_field1 != Date.new(2024, 6, 3) %>
+    <p>Date Field 1: <%= @nested_post.post.date_field1 %></p>
+  <% end %>
+
+  <% if @nested_post.post.date_field2.present? && @nested_post.post.date_field2 != Date.new(2024, 6, 3) %>
+    <p>Date Field 2: <%= @nested_post.post.date_field2 %></p>
+  <% end %>
+
+  <% if @nested_post.post.date_field3.present? && @nested_post.post.date_field3 != Date.new(2024, 6, 3) %>
+    <p>Date Field 3: <%= @nested_post.post.date_field3 %></p>
+  <% end %>
+</div>
   <p>Posted by <%= @nested_post.user.email %> <%= time_ago_in_words(@nested_post.created_at) %> ago</p>
 
   <% if user_signed_in? && (@nested_post.user == current_user || current_user.admin?) %>
@@ -27,30 +94,29 @@
   <br>
   <p>Total Comments: <%= @comments.count %></p>
 
-<div id="comments">
-  <% @comments.reverse_each do |comment| %>
-    <div class="comment">
-      <p><%= comment.name %>: <%= comment.body %></p>
-      <p>Posted: <%= time_ago_in_words(comment.created_at) %> ago</p>
-    </div>
-  <% end %>
-</div>
-<% if user_signed_in?%>
-  <h2>New Comment</h2>
-  <%= form_for([@nested_post, @nested_post.comments.build]) do |f| %>
-    <p>
-      <%= f.label :name, "User name: " %><br>
-      <%= f.text_field :name %>
-    </p>
-    <p>
-      <%= f.label :body, "Leave a comment! " %><br>
-      <%= f.text_area :body %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
+  <div id="comments">
+    <% @comments.reverse_each do |comment| %>
+      <div class="comment">
+        <p><%= comment.name %>: <%= comment.body %></p>
+        <p>Posted: <%= time_ago_in_words(comment.created_at) %> ago</p>
+      </div>
+    <% end %>
+  </div>
+
+  <% if user_signed_in? %>
+    <h2>New Comment</h2>
+    <%= form_for([@nested_post, @nested_post.comments.build]) do |f| %>
+      <p>
+        <%= f.label :name, "User name: " %><br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.label :body, "Leave a comment! " %><br>
+        <%= f.text_area :body %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
   <% end %>
 
-  <% end %>
-
-</div>
