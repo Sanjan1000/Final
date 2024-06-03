@@ -1,13 +1,80 @@
 <h1><%= @post.title %></h1>
 <p><%= markdown(@post.body) %></p>
 <p>Topic: <%= @post.topic.humanize %></p>
+
+<!-- Integer Fields -->
+<% if @post.integer_field1.present? %>
+  <p>Integer Field 1: <%= @post.integer_field1 %></p>
+<% end %>
+
+<% if @post.integer_field2.present? %>
+  <p>Integer Field 2: <%= @post.integer_field2 %></p>
+<% end %>
+
+<% if @post.integer_field3.present? %>
+  <p>Integer Field 3: <%= @post.integer_field3 %></p>
+<% end %>
+
+<!-- String Fields -->
+<% if @post.string_field1.present? %>
+  <p>String Field 1: <%= @post.string_field1 %></p>
+<% end %>
+
+<% if @post.string_field2.present? %>
+  <p>String Field 2: <%= @post.string_field2 %></p>
+<% end %>
+
+<% if @post.string_field3.present? %>
+  <p>String Field 3: <%= @post.string_field3 %></p>
+<% end %>
+
+<!-- Multiline Text Fields -->
+<% if @post.multiline_text1.present? %>
+  <p>Multiline Text 1:</p>
+  <p><%= @post.multiline_text1 %></p>
+<% end %>
+
+<% if @post.multiline_text2.present? %>
+  <p>Multiline Text 2:</p>
+  <p><%= @post.multiline_text2 %></p>
+<% end %>
+
+<% if @post.multiline_text3.present? %>
+  <p>Multiline Text 3:</p>
+  <p><%= @post.multiline_text3 %></p>
+<% end %>
+
+<!-- Boolean Fields -->
+<% if @post.boolean_field1.present? %>
+  <p>Boolean Field 1: <%= @post.boolean_field1 ? 'True' : 'False' %></p>
+<% end %>
+
+<% if @post.boolean_field2.present? %>
+  <p>Boolean Field 2: <%= @post.boolean_field2 ? 'True' : 'False' %></p>
+<% end %>
+
+<% if @post.boolean_field3.present? %>
+  <p>Boolean Field 3: <%= @post.boolean_field3 ? 'True' : 'False' %></p>
+<% end %>
+
+<!-- Date Fields -->
+<% if @post.date_field1.present? && @post.date_field1 != Date.new(2024, 6, 3) %>
+  <p>Date Field 1: <%= @post.date_field1 %></p>
+<% end %>
+
+<% if @post.date_field2.present? && @post.date_field2 != Date.new(2024, 6, 3) %>
+  <p>Date Field 2: <%= @post.date_field2 %></p>
+<% end %>
+
+<% if @post.date_field3.present? && @post.date_field3 != Date.new(2024, 6, 3) %>
+  <p>Date Field 3: <%= @post.date_field3 %></p>
+<% end %>
+
 <% if user_signed_in? && (@post.user == current_user || current_user.admin?) %>
   <%= link_to "Edit Item", edit_post_path(@post) %>
   <%= button_to "Delete Item", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
   <%= link_to 'Add New Item', new_post_nested_post_path(@post) %>
 <% end %>
-
-
 
 <h2>Items</h2>
 <ul>
@@ -15,8 +82,6 @@
     <li>
       <%= link_to nested_post.title, post_nested_post_path(@post, nested_post) %>
       <p><%= truncate(nested_post.body, length: 50) %></p>
-      
     </li>
   <% end %>
 </ul>
-

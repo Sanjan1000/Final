@@ -10,82 +10,93 @@
   <br><br>
   
   <div class="field">
-    <%= f.label :topic %>
+    <%= f.label :topic, "Topic" %>
     <%= f.select :topic, Post.topics.keys.map { |topic| [topic.capitalize, topic] } %>
   </div>
   <br><br>
-  <%= f.label :integer_field1, "Integer Field 1" %> <br>
-  <%= f.text_field :integer_field1%>
+
+  <!-- Integer Fields -->
+  <%= f.label :integer_field1, "Integer Field 1" %>
   <br>
   <%= f.number_field :integer_field1 %>
   <br><br>
-  <%= f.label :integer_field1, "Integer Field 2" %><br>
-  <%= f.text_field :integer_field2%>
+  
+  <%= f.label :integer_field2, "Integer Field 2" %>
   <br>
   <%= f.number_field :integer_field2 %>
   <br><br>
-  <%= f.label :integer_field1, "Integer Field 3" %><br>
-  <%= f.text_field :integer_field3 %>
+  
+  <%= f.label :integer_field3, "Integer Field 3" %>
   <br>
   <%= f.number_field :integer_field3 %>
   <br><br>
 
   <!-- String Fields -->
-  <%= f.label :string_field1, "String Field 1" %><br>
-  <%= f.text_field :string_field1 %>
+  <%= f.label :string_field1, "String Field 1" %>
   <br>
   <%= f.text_field :string_field1 %>
   <br><br>
-  <%= f.label :string_field1, "String Field 2" %><br>
-  <%= f.text_field :string_field2 %>
+  
+  <%= f.label :string_field2, "String Field 2" %>
   <br>
   <%= f.text_field :string_field2 %>
   <br><br>
-  <%= f.label :string_field1, "String Field 3" %><br>
-  <%= f.text_field :string_field3 %>
+  
+  <%= f.label :string_field3, "String Field 3" %>
   <br>
   <%= f.text_field :string_field3 %>
   <br><br>
 
   <!-- Multiline Text Fields -->
-  <%= f.label :multiline_text1, "Multiline Text 1" %><br>
-  <%= f.text_field :multiline_text1 %>
+  <%= f.label :multiline_text1, "Multiline Text 1" %>
   <br>
   <%= f.text_area :multiline_text1 %>
   <br><br>
-  <%= f.label :multiline_text1, "Multiline Text 2" %><br>
-  <%= f.text_field :multiline_text2 %>
+  
+  <%= f.label :multiline_text2, "Multiline Text 2" %>
   <br>
   <%= f.text_area :multiline_text2 %>
   <br><br>
-  <%= f.label :multiline_text1, "Multiline Text 3" %><br>
-  <%= f.text_field :multiline_text3 %>
+  
+  <%= f.label :multiline_text3, "Multiline Text 3" %>
   <br>
   <%= f.text_area :multiline_text3 %>
   <br><br>
 
+  <!-- Boolean Checkboxes -->
+  <%= f.label :boolean_field1, "Boolean Field 1" %><br>
+  <%= f.text_field :boolean_field1 %> <br>
+  <%= f.check_box :boolean_field1, {}, true, false %>
+  <br><br>
   
+  <%= f.label :boolean_field2, "Boolean Field 2" %><br>
+  <%= f.text_field :boolean_field2 %> <br>
+  <%= f.check_box :boolean_field2, {}, true, false %>
+  <br><br>
+  
+  <%= f.label :boolean_field3, "Boolean Field 3" %><br>
+  <%= f.text_field :boolean_field3 %> <br>
+  <%= f.check_box :boolean_field3, {}, true, false %>
+  <br><br>
 
   <!-- Date Fields -->
-  <%= f.label :date_field1, "Date Field 1" %><br>
-  <%= f.text_field :date_field1 %>
+  <%= f.label :date_field1, "Date Field 1" %>
   <br>
   <%= f.date_select :date_field1 %>
   <br><br>
-  <%= f.label :date_field1, "Date Field 2" %><br>
-  <%= f.text_field :date_field2 %>
+  
+  <%= f.label :date_field2, "Date Field 2" %>
   <br>
   <%= f.date_select :date_field2 %>
   <br><br>
-  <%= f.label :date_field1, "Date Field 3" %><br>
-  <%= f.text_field :date_field3%>
+  
+  <%= f.label :date_field3, "Date Field 3" %>
   <br>
   <%= f.date_select :date_field3 %>
   <br><br>
 
   <%= f.submit 'Create' %>  
 <% end %>
-
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
