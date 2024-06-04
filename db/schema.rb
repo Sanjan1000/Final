@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_03_080957) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_04_144316) do
   create_table "comments", force: :cascade do |t|
     t.string "name"
     t.text "body"
+    t.integer "nested_post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "nested_post_id"
     t.index ["nested_post_id"], name: "index_comments_on_nested_post_id"
   end
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "nested_post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "nested_post_id"
     t.index ["nested_post_id"], name: "index_likes_on_nested_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
@@ -33,17 +33,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_03_080957) do
     t.string "title"
     t.text "body"
     t.integer "post_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["post_id"], name: "index_nested_posts_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "topic"
     t.integer "integer_field1"
@@ -64,6 +62,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_03_080957) do
     t.string "boolean_field1_text"
     t.string "boolean_field2_text"
     t.string "boolean_field3_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggables", force: :cascade do |t|
