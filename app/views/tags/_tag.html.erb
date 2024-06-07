@@ -1,4 +1,4 @@
-<div id="<%= dom_id(tag) %>">
+<div id="<%= dom_id(tag) %>" class="mb-3">
   <p>
     <strong>Name:</strong>
     <%= tag.name %>
@@ -6,11 +6,13 @@
 
   <h2>Items:</h2>
   <% tag.taggables.each do |taggable| %>
-    <div class="nested-post">
-      <h3><%= taggable.nested_post.title %></h3>
-      <p><%= taggable.nested_post.body %></p>
-      <%= link_to 'Read More', post_path(taggable.nested_post.post, taggable.nested_post) %>
-      <hr />
+    <div class="nested-post card mb-3">
+      <div class="card-body">
+        <h3 class="card-title"><%= taggable.nested_post.title %></h3>
+        <p class="card-text"><%= taggable.nested_post.body %></p>
+        <%= link_to 'Read More', post_path(taggable.nested_post.post, taggable.nested_post), class: "btn btn-primary" %>
+        <hr />
+      </div>
     </div>
   <% end %>
 </div>

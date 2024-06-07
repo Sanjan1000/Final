@@ -1,99 +1,147 @@
-<%= form_for @post do |f| %>
-  <%= f.label :title, "Name" %>
-  <br>
-  <%= f.text_field :title %>
-  <br><br>
-  
-  <%= f.label :body, "Description" %>
-  <br>
-  <%= f.text_area :body, id: "markdown-editor" %>
-  <br><br>
-  
-  <div class="field">
-    <%= f.label :topic, "Topic" %>
-    <%= f.select :topic, Post.topics.keys.map { |topic| [topic.capitalize, topic] } %>
+<%= form_for @post, html: { class: 'mt-5' } do |f| %>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :title, "Name", class: "form-label" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
   </div>
-  <br><br>
+  
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :body, "Description", class: "form-label" %>
+      <%= f.text_area :body, id: "markdown-editor", class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :topic, "Topic", class: "form-label" %>
+      <%= f.select :topic, Post.topics.keys.map { |topic| [topic.capitalize, topic] }, {}, class: "form-select" %>
+    </div>
+  </div>
 
   <!-- Integer Fields -->
-  <%= f.label :integer_field1, "Integer Field 1" %>
-  <br>
-  <%= f.number_field :integer_field1 %>
-  <br><br>
-  
-  <%= f.label :integer_field2, "Integer Field 2" %>
-  <br>
-  <%= f.number_field :integer_field2 %>
-  <br><br>
-  
-  <%= f.label :integer_field3, "Integer Field 3" %>
-  <br>
-  <%= f.number_field :integer_field3 %>
-  <br><br>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :integer_field1, "Integer Field 1", class: "form-label" %>
+      <%= f.number_field :integer_field1, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :integer_field2, "Integer Field 2", class: "form-label" %>
+      <%= f.number_field :integer_field2, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :integer_field3, "Integer Field 3", class: "form-label" %>
+      <%= f.number_field :integer_field3, class: "form-control" %>
+    </div>
+  </div>
 
   <!-- String Fields -->
-  <%= f.label :string_field1, "String Field 1" %>
-  <br>
-  <%= f.text_field :string_field1 %>
-  <br><br>
-  
-  <%= f.label :string_field2, "String Field 2" %>
-  <br>
-  <%= f.text_field :string_field2 %>
-  <br><br>
-  
-  <%= f.label :string_field3, "String Field 3" %>
-  <br>
-  <%= f.text_field :string_field3 %>
-  <br><br>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :string_field1, "String Field 1", class: "form-label" %>
+      <%= f.text_field :string_field1, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :string_field2, "String Field 2", class: "form-label" %>
+      <%= f.text_field :string_field2, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :string_field3, "String Field 3", class: "form-label" %>
+      <%= f.text_field :string_field3, class: "form-control" %>
+    </div>
+  </div>
 
   <!-- Multiline Text Fields -->
-  <%= f.label :multiline_text1, "Multiline Text 1" %>
-  <br>
-  <%= f.text_area :multiline_text1 %>
-  <br><br>
-  
-  <%= f.label :multiline_text2, "Multiline Text 2" %>
-  <br>
-  <%= f.text_area :multiline_text2 %>
-  <br><br>
-  
-  <%= f.label :multiline_text3, "Multiline Text 3" %>
-  <br>
-  <%= f.text_area :multiline_text3 %>
-  <br><br>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :multiline_text1, "Multiline Text 1", class: "form-label" %>
+      <%= f.text_area :multiline_text1, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :multiline_text2, "Multiline Text 2", class: "form-label" %>
+      <%= f.text_area :multiline_text2, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :multiline_text3, "Multiline Text 3", class: "form-label" %>
+      <%= f.text_area :multiline_text3, class: "form-control" %>
+    </div>
+  </div>
 
   <!-- Boolean Checkboxes -->
-  
-  <%= f.text_field :boolean_field1_text %> <br>
-  <%= f.check_box :boolean_field1, {}, true, false %>
-  <br><br>
-  
-  <%= f.text_field :boolean_field2_text %> <br>
-  <%= f.check_box :boolean_field2, {}, true, false %>
-  <br><br>
-  
-  <%= f.text_field :boolean_field3_text %> <br>
-  <%= f.check_box :boolean_field3, {}, true, false %>
-  <br><br>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :date_field1, "Date Field 1", class: "form-label" %>
+      <br>
+      <%= f.text_field :boolean_field1_text %> 
+      <%= f.check_box :boolean_field1, {}, true, false %>
+     </div>
+  </div>
 
-  <!-- Date Fields -->
-  <%= f.label :date_field1, "Date Field 1" %>
-  <br>
-  <%= f.date_select :date_field1 %>
-  <br><br>
   
-  <%= f.label :date_field2, "Date Field 2" %>
-  <br>
-  <%= f.date_select :date_field2 %>
-  <br><br>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :date_field1, "Date Field 2", class: "form-label" %>
+      <br>
+      <%= f.text_field :boolean_field2_text %> 
+      <%= f.check_box :boolean_field2, {}, true, false %>
+     </div>
+  </div>
   
-  <%= f.label :date_field3, "Date Field 3" %>
-  <br>
-  <%= f.date_select :date_field3 %>
-  <br><br>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :date_field1, "Date Field 3", class: "form-label" %>
+      <br>
+      <%= f.text_field :boolean_field2_text %> 
+      <%= f.check_box :boolean_field2, {}, true, false %>
+     </div>
+  </div>
 
-  <%= f.submit 'Create' %>  
+   <!-- Date Fields -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :date_field1, "Date Field 1", class: "form-label" %>
+      <%= f.date_select :date_field1, {}, class: "form-select" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :date_field2, "Date Field 2", class: "form-label" %>
+      <%= f.date_select :date_field2, {}, class: "form-select" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :date_field3, "Date Field 3", class: "form-label" %>
+      <%= f.date_select :date_field3, {}, class: "form-select" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.submit 'Create', class: "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>
 
 <script>

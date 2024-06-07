@@ -1,122 +1,166 @@
-<div>
-  <h2><%= @nested_post.title %></h2>
-  <p><%= @nested_post.body %></p>
-   <!-- Add the post fields here -->
-  <% if @nested_post.post.integer_field1.present? %>
-    <p>Integer Field 1: <%= @nested_post.post.integer_field1 %></p>
-  <% end %>
+<style>
+  /* custom.css */
+body {
+  background-color: #f8f9fa;
+}
 
-  <% if @nested_post.post.integer_field2.present? %>
-    <p>Integer Field 2: <%= @nested_post.post.integer_field2 %></p>
-  <% end %>
+h1.display-4 {
+  font-weight: bold;
+  color: #343a40;
+}
 
-  <% if @nested_post.post.integer_field3.present? %>
-    <p>Integer Field 3: <%= @nested_post.post.integer_field3 %></p>
-  <% end %>
+.card {
+  margin-bottom: 1rem;
+}
 
-  <!-- String Fields -->
-  <% if @nested_post.post.string_field1.present? %>
-    <p>String Field 1: <%= @nested_post.post.string_field1 %></p>
-  <% end %>
+.card-header {
+  background-color: #6c757d;
+  color: #fff;
+}
 
-  <% if @nested_post.post.string_field2.present? %>
-    <p>String Field 2: <%= @nested_post.post.string_field2 %></p>
-  <% end %>
+.btn-custom {
+  background-color: #343a40;
+  color: #fff;
+}
 
-  <% if @nested_post.post.string_field3.present? %>
-    <p>String Field 3: <%= @nested_post.post.string_field3 %></p>
-  <% end %>
+.btn-custom:hover {
+  background-color: #495057;
+  color: #fff;
+}
 
-  <!-- Multiline Text Fields -->
-  <% if @nested_post.post.multiline_text1.present? %>
-    <p>Multiline Text 1:</p>
-    <p><%= @nested_post.post.multiline_text1 %></p>
-  <% end %>
+</style>
+<div class="container mt-5">
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2 class="card-title"><%= @nested_post.title %></h2>
+      <p class="card-text"><%= @nested_post.body %></p>
 
-  <% if @nested_post.post.multiline_text2.present? %>
-    <p>Multiline Text 2:</p>
-    <p><%= @nested_post.post.multiline_text2 %></p>
-  <% end %>
+      <!-- Post Fields -->
+      <% if @nested_post.post.integer_field1.present? %>
+        <p class="card-text"><strong>Integer Field 1:</strong> <%= @nested_post.post.integer_field1 %></p>
+      <% end %>
 
-  <% if @nested_post.post.multiline_text3.present? %>
-    <p>Multiline Text 3:</p>
-    <p><%= @nested_post.post.multiline_text3 %></p>
-  <% end %>
+      <% if @nested_post.post.integer_field2.present? %>
+        <p class="card-text"><strong>Integer Field 2:</strong> <%= @nested_post.post.integer_field2 %></p>
+      <% end %>
 
-  <!-- Boolean Fields -->
-  <% if @nested_post.post.boolean_field1.present? %>
-    <p><%= @nested_post.post.boolean_field1_text %>: <%= @nested_post.post.boolean_field1 ? 'True' : 'False' %></p>
-  <% end %>
+      <% if @nested_post.post.integer_field3.present? %>
+        <p class="card-text"><strong>Integer Field 3:</strong> <%= @nested_post.post.integer_field3 %></p>
+      <% end %>
 
-  <% if @nested_post.post.boolean_field2.present? %>
-    <p><%= @nested_post.post.boolean_field2_text %>: <%= @nested_post.post.boolean_field2 ? 'True' : 'False' %></p>
-  <% end %>
+      <!-- String Fields -->
+      <% if @nested_post.post.string_field1.present? %>
+        <p class="card-text"><strong>String Field 1:</strong> <%= @nested_post.post.string_field1 %></p>
+      <% end %>
 
-  <% if @nested_post.post.boolean_field3.present? %>
-    <p><%= @nested_post.post.boolean_field3_text %>: <%= @nested_post.post.boolean_field3 ? 'True' : 'False' %></p>
-  <% end %>
+      <% if @nested_post.post.string_field2.present? %>
+        <p class="card-text"><strong>String Field 2:</strong> <%= @nested_post.post.string_field2 %></p>
+      <% end %>
 
-  <!-- Date Fields -->
-  <% if @nested_post.post.date_field1.present? && @nested_post.post.date_field1 != Date.new(2024, 6, 4) %>
-    <p>Date Field 1: <%= @nested_post.post.date_field1 %></p>
-  <% end %>
+      <% if @nested_post.post.string_field3.present? %>
+        <p class="card-text"><strong>String Field 3:</strong> <%= @nested_post.post.string_field3 %></p>
+      <% end %>
 
-  <% if @nested_post.post.date_field2.present? && @nested_post.post.date_field2 != Date.new(2024, 6, 4) %>
-    <p>Date Field 2: <%= @nested_post.post.date_field2 %></p>
-  <% end %>
+      <!-- Multiline Text Fields -->
+      <% if @nested_post.post.multiline_text1.present? %>
+        <p class="card-text"><strong>Multiline Text 1:</strong></p>
+        <p><%= @nested_post.post.multiline_text1 %></p>
+      <% end %>
 
-  <% if @nested_post.post.date_field3.present? && @nested_post.post.date_field3 != Date.new(2024, 6, 4) %>
-    <p>Date Field 3: <%= @nested_post.post.date_field3 %></p>
-  <% end %>
-</div>
-  <p>Posted by <%= @nested_post.user.email %> <%= time_ago_in_words(@nested_post.created_at) %> ago</p>
+      <% if @nested_post.post.multiline_text2.present? %>
+        <p class="card-text"><strong>Multiline Text 2:</strong></p>
+        <p><%= @nested_post.post.multiline_text2 %></p>
+      <% end %>
 
-  <% if user_signed_in? && (@nested_post.user == current_user || current_user.admin?) %>
-    <%= link_to 'Edit', edit_post_nested_post_path(@nested_post.post, @nested_post) %> |
-    <%= button_to 'Delete', post_nested_post_path(@nested_post.post, @nested_post), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+      <% if @nested_post.post.multiline_text3.present? %>
+        <p class="card-text"><strong>Multiline Text 3:</strong></p>
+        <p><%= @nested_post.post.multiline_text3 %></p>
+      <% end %>
 
-  <br>
-  <p>Likes: <%= @nested_post.likes.count %></p>
-  <% if user_signed_in? %>
-    <% if @nested_post.likes.where(user_id: current_user.id).exists? %>
-      <%= button_to 'Unlike', post_nested_post_like_path(@nested_post.post, @nested_post, @nested_post.likes.find_by(user_id: current_user.id)), method: :delete %>
-    <% else %>
-      <%= button_to 'Like', post_nested_post_likes_path(@nested_post.post, @nested_post), method: :post %>
-    <% end %>
-  <% end %>
-  <hr>
+      <!-- Boolean Fields -->
+      <% if @nested_post.post.boolean_field1.present? %>
+        <p class="card-text"><strong><%= @nested_post.post.boolean_field1_text %>:</strong> <%= @nested_post.post.boolean_field1 ? 'True' : 'False' %></p>
+      <% end %>
 
-  <strong>Tags:</strong>
-  <% @nested_post.tags.each do |tag| %>
-    <%= link_to tag.name.capitalize, tag_path(tag), class: "tag" %>
-  <% end %>
-  <br>
-  <p>Total Comments: <%= @comments.count %></p>
+      <% if @nested_post.post.boolean_field2.present? %>
+        <p class="card-text"><strong><%= @nested_post.post.boolean_field2_text %>:</strong> <%= @nested_post.post.boolean_field2 ? 'True' : 'False' %></p>
+      <% end %>
 
+      <% if @nested_post.post.boolean_field3.present? %>
+        <p class="card-text"><strong><%= @nested_post.post.boolean_field3_text %>:</strong> <%= @nested_post.post.boolean_field3 ? 'True' : 'False' %></p>
+      <% end %>
+
+      <!-- Date Fields -->
+      <% if @nested_post.post.date_field1.present? && @nested_post.post.date_field1 != Date.current %>
+        <p class="card-text"><strong>Date Field 1:</strong> <%= @nested_post.post.date_field1 %></p>
+      <% end %>
+
+      <% if @nested_post.post.date_field2.present? && @nested_post.post.date_field2 != Date.current %>
+        <p class="card-text"><strong>Date Field 2:</strong> <%= @nested_post.post.date_field2 %></p>
+      <% end %>
+
+      <% if @nested_post.post.date_field3.present? && @nested_post.post.date_field3 != Date.current %>
+        <p class="card-text"><strong>Date Field 3:</strong> <%= @nested_post.post.date_field3 %></p>
+      <% end %>
+
+      <p class="text-muted">Posted by <%= @nested_post.user.email %> <%= time_ago_in_words(@nested_post.created_at) %> ago</p>
+
+      <% if user_signed_in? && (@nested_post.user == current_user || current_user.admin?) %>
+        <div class="d-flex d-flex justify-content-start">
+          <%= button_to 'Edit', edit_post_nested_post_path(@nested_post.post, @nested_post), method: :get, class: "btn btn-primary" %>
+          <%= button_to 'Delete', post_nested_post_path(@nested_post.post, @nested_post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        </div>
+      <% end %>
+
+      <br>
+      <p><strong>Likes:</strong> <%= @nested_post.likes.count %></p>
+      <% if user_signed_in? %>
+        <% if @nested_post.likes.where(user_id: current_user.id).exists? %>
+          <%= button_to 'Unlike', post_nested_post_like_path(@nested_post.post, @nested_post, @nested_post.likes.find_by(user_id: current_user.id)), method: :delete, class: "btn btn-warning" %>
+        <% else %>
+          <%= button_to 'Like', post_nested_post_likes_path(@nested_post.post, @nested_post), method: :post, class: "btn btn-success" %>
+        <% end %>
+      <% end %>
+      <hr>
+      <p><strong>Tags:</strong></p>
+      <% @nested_post.tags.each do |tag| %>
+        <%= link_to tag.name.capitalize, tag_path(tag), class: "badge bg-primary" %>
+      <% end %>
+      <br>
+      
+    </div>
+  </div>
+  <div>
+    <h2>Comment Section</h2>
+<p><strong>Total Comments:</strong> <%= @comments.count %></p>
   <div id="comments">
+    
     <% @comments.reverse_each do |comment| %>
-      <div class="comment">
-        <p><%= comment.name %>: <%= comment.body %></p>
-        <p>Posted: <%= time_ago_in_words(comment.created_at) %> ago</p>
+      <div class="card mb-3">
+        <div class="card-body">
+          <p class="card-text"><strong><%= comment.name %>:</strong> <%= comment.body %></p>
+          <p class="text-muted">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+        </div>
       </div>
     <% end %>
   </div>
 
   <% if user_signed_in? %>
-    <h2>New Comment</h2>
+    
     <%= form_for([@nested_post, @nested_post.comments.build]) do |f| %>
-      <p>
-        <%= f.label :name, "User name: " %><br>
-        <%= f.text_field :name %>
-      </p>
-      <p>
-        <%= f.label :body, "Leave a comment! " %><br>
-        <%= f.text_area :body %>
-      </p>
-      <p>
-        <%= f.submit %>
-      </p>
+      <div class="mb-3">
+        <%= f.label :name, "User name:", class: "form-label" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :body, "Leave a comment!", class: "form-label" %>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.submit 'Submit', class: "btn btn-primary" %>
+      </div>
     <% end %>
   <% end %>
+</div>
+</div>
 

@@ -1,10 +1,11 @@
-<h1>Editing tag</h1>
+<h1 class="display-4">Editing Tag</h1>
 
 <%= render "form", tag: @tag %>
 
 <br>
 
-<div>
-  <%= link_to "Show this tag", @tag %> |
-  <%= link_to "Back to tags", tags_path %>
+<div class="btn-group" role="group" aria-label="Tag navigation">
+  <%= button_to "Show this tag", @tag, class: "btn btn-secondary", method: :get %>
+  <%= button_to "Back to tags", tags_path, class: "btn btn-secondary", method: :get %>
 </div>
+

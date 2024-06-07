@@ -1,87 +1,193 @@
-<h1><%= @post.title %></h1>
-<p><%= markdown(@post.body) %></p>
-<p>Topic: <%= @post.topic.humanize %></p>
+<style>
+  /* custom.css */
+body {
+  background-color: #f8f9fa;
+}
 
-<!-- Integer Fields -->
-<% if @post.integer_field1.present? %>
-  <p>Integer Field 1: <%= @post.integer_field1 %></p>
-<% end %>
+h1.display-4 {
+  font-weight: bold;
+  color: #343a40;
+}
 
-<% if @post.integer_field2.present? %>
-  <p>Integer Field 2: <%= @post.integer_field2 %></p>
-<% end %>
+.card {
+  margin-bottom: 1rem;
+}
 
-<% if @post.integer_field3.present? %>
-  <p>Integer Field 3: <%= @post.integer_field3 %></p>
-<% end %>
+.card-header {
+  background-color: #6c757d;
+  color: #fff;
+}
 
-<!-- String Fields -->
-<% if @post.string_field1.present? %>
-  <p>String Field 1: <%= @post.string_field1 %></p>
-<% end %>
+.btn-custom {
+  background-color: #343a40;
+  color: #fff;
+}
 
-<% if @post.string_field2.present? %>
-  <p>String Field 2: <%= @post.string_field2 %></p>
-<% end %>
+.btn-custom:hover {
+  background-color: #495057;
+  color: #fff;
+}
 
-<% if @post.string_field3.present? %>
-  <p>String Field 3: <%= @post.string_field3 %></p>
-<% end %>
+</style>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="display-4"><%= @post.title %></h1>
+      <p class="card-text"><%= markdown(@post.body) %></p>
+      <span class="badge bg-secondary">Topic: <%= @post.topic.humanize %></span>
+    </div>
+  </div>
 
-<!-- Multiline Text Fields -->
-<% if @post.multiline_text1.present? %>
-  <p>Multiline Text 1:</p>
-  <p><%= @post.multiline_text1 %></p>
-<% end %>
-
-<% if @post.multiline_text2.present? %>
-  <p>Multiline Text 2:</p>
-  <p><%= @post.multiline_text2 %></p>
-<% end %>
-
-<% if @post.multiline_text3.present? %>
-  <p>Multiline Text 3:</p>
-  <p><%= @post.multiline_text3 %></p>
-<% end %>
-
-<!-- Boolean Fields -->
-<% if @post.boolean_field1.present? %>
-  <p><%= @post.boolean_field1_text %> : <%= @post.boolean_field1 ? 'True' : 'False' %></p>
-<% end %>
-
-<% if @post.boolean_field2.present? %>
-  <p><%= @post.boolean_field2_text%> : <%= @post.boolean_field2 ? 'True' : 'False' %></p>
-<% end %>
-
-<% if @post.boolean_field3.present? %>
-  <p><%= @post.boolean_field3_text %> : <%= @post.boolean_field3 ? 'True' : 'False' %></p>
-<% end %>
-
-<!-- Date Fields -->
-<% if @post.date_field1.present? && @post.date_field1 != Date.new(2024, 6, 4) %>
-  <p>Date Field 1: <%= @post.date_field1 %></p>
-<% end %>
-
-<% if @post.date_field2.present? && @post.date_field2 != Date.new(2024, 6, 4) %>
-  <p>Date Field 2: <%= @post.date_field2 %></p>
-<% end %>
-
-<% if @post.date_field3.present? && @post.date_field3 != Date.new(2024, 6, 4) %>
-  <p>Date Field 3: <%= @post.date_field3 %></p>
-<% end %>
-
-<% if user_signed_in? && (@post.user == current_user || current_user.admin?) %>
-  <%= link_to "Edit Item", edit_post_path(@post) %>
-  <%= button_to "Delete Item", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
-  <%= link_to 'Add New Item', new_post_nested_post_path(@post) %>
-<% end %>
-
-<h2>Items</h2>
-<ul>
-  <% @post.nested_posts.each do |nested_post| %>
-    <li>
-      <%= link_to nested_post.title, post_nested_post_path(@post, nested_post) %>
-      <p><%= truncate(nested_post.body, length: 50) %></p>
-    </li>
+  <!-- Integer Fields -->
+  <% if @post.integer_field1.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Integer Field 1:</strong> <%= @post.integer_field1 %></p>
+      </div>
+    </div>
   <% end %>
-</ul>
+
+  <% if @post.integer_field2.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Integer Field 2:</strong> <%= @post.integer_field2 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @post.integer_field3.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Integer Field 3:</strong> <%= @post.integer_field3 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- String Fields -->
+  <% if @post.string_field1.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>String Field 1:</strong> <%= @post.string_field1 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @post.string_field2.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>String Field 2:</strong> <%= @post.string_field2 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @post.string_field3.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>String Field 3:</strong> <%= @post.string_field3 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Multiline Text Fields -->
+  <% if @post.multiline_text1.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Multiline Text 1:</strong></p>
+        <p><%= @post.multiline_text1 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @post.multiline_text2.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Multiline Text 2:</strong></p>
+        <p><%= @post.multiline_text2 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @post.multiline_text3.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Multiline Text 3:</strong></p>
+        <p><%= @post.multiline_text3 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Boolean Fields -->
+  <% if @post.boolean_field1.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong><%= @post.boolean_field1_text %>:</strong> <%= @post.boolean_field1 ? 'True' : 'False' %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @post.boolean_field2.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong><%= @post.boolean_field2_text %>:</strong> <%= @post.boolean_field2 ? 'True' : 'False' %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @post.boolean_field3.present? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong><%= @post.boolean_field3_text %>:</strong> <%= @post.boolean_field3 ? 'True' : 'False' %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Date Fields -->
+  <% if @post.date_field1.present? && @post.date_field1 != Date.current %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Date Field 1:</strong> <%= @post.date_field1 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @post.date_field2.present? && @post.date_field2 != Date.current %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Date Field 2:</strong> <%= @post.date_field2 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @post.date_field3.present? && @post.date_field3 != Date.current %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Date Field 3:</strong> <%= @post.date_field3 %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? && (@post.user == current_user || current_user.admin?) %>
+    <div class="d-flex justify-content-start mb-4">
+  <div class="mr-2">
+    <%= link_to 'Add New Item', new_post_nested_post_path(@post), class: "btn btn-success btn-block" %>
+  </div>
+  <div class="mr-2">
+    <%= button_to "Edit Item", edit_post_path(@post), method: :get, class: "btn btn-custom btn-block" %>
+  </div>
+  <div class="mr-2">
+    <%= button_to "Delete Item", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-block" %>
+  </div>
+</div>
+  <% end %>
+
+  <h2 class="mt-5">Items: </h2>
+  <ul class="list-group">
+    <% @post.nested_posts.each do |nested_post| %>
+      <li class="list-group-item">
+        <i class="bi bi-bookmark-fill"></i> <%= link_to nested_post.title, post_nested_post_path(@post, nested_post), class: "text-decoration-none" %>
+        <p class="mb-0"><%= truncate(nested_post.body, length: 50) %></p>
+      </li>
+    <% end %>
+  </ul>
+  <br>
+</div>

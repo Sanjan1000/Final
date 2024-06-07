@@ -1,24 +1,29 @@
-<%= form_with(model: [@post, @nested_post]) do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <br>
-    <%= form.text_field :title %>
+<%= form_with(model: [@post, @nested_post], local: true, class: "mt-5") do |form| %>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= form.label :title, class: "form-label" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <br>
-    <%= form.text_area :body %>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= form.label :body, class: "form-label" %>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :tags, 'Tags (comma separated)' %>
-    <br>
-    <%= form.text_field :tags, value: @nested_post.tags.map(&:name).join(",") %>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= form.label :tags, 'Tags (comma separated)', class: "form-label" %>
+      <%= form.text_field :tags, value: @nested_post.tags.map(&:name).join(","), class: "form-control" %>
+    </div>
   </div>
   
-  <div class="actions">
-    <br>
-    <%= form.submit 'Create' %>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= form.submit 'Create', class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
+

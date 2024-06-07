@@ -3,13 +3,14 @@
 
 <span class="badge bg-success"><i class="bi bi-collection"> New Collections</i></span>
 <% end %>
+<br>
 
-
-<div class="d-inline-flex p-2 card border-primary mb-3" style="max-width: 30rem;">
-  <div class="card-header">Collection</div>
+<div class="d-inline-flex p-2 card border-0" style="max-width: 30rem;">
+  <div class="card-header">List of Collection: </div>
   <div class="card-body">
     <h4 class="card-title"><% @posts.each do |post| %>
-<h2><%= link_to post.title, post , style: "text-decoration: none;"%></h2>
+<h2> <i class="bi bi-collection-fill"></i> <%= link_to post.title, post , style: "text-decoration: none;"%></h2>
+<br>
 <% end %></h4>
     
   </div>
