@@ -4,7 +4,7 @@
   <% @tagged_items.each do |item| %>
     <li>
       <strong>Name:</strong> <%= item.title %><br>
-      <strong>Post:</strong> <%= link_to item.post.title, post_path(item.post) %><br>
+      <strong>Post:</strong> <%= link_to item.post.title, post_path(item.post), class: "text-decoration-none" %><br>
       
     </li>
   <% end %>

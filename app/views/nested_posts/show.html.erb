@@ -1,31 +1,60 @@
 <style>
   /* custom.css */
+
+/* Define light mode colors */
+:root {
+  --background-color: #f8f9fa;
+  --text-color: #343a40;
+  --card-header-bg: #6c757d;
+  --card-header-text: #fff;
+  --btn-bg: #343a40;
+  --btn-text: #fff;
+  --btn-hover-bg: #495057;
+}
+
+/* Define dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #343a40;
+    --text-color: #f8f9fa;
+    --card-header-bg: #495057;
+    --card-header-text: #f8f9fa;
+    --btn-bg: #6c757d;
+    --btn-text: #343a40;
+    --btn-hover-bg: #343a40;
+  }
+}
+
+/* Apply the colors */
 body {
-  background-color: #f8f9fa;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 h1.display-4 {
   font-weight: bold;
-  color: #343a40;
+  color: var(--text-color);
 }
 
 .card {
   margin-bottom: 1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .card-header {
-  background-color: #6c757d;
-  color: #fff;
+  background-color: var(--card-header-bg);
+  color: var(--card-header-text);
 }
 
 .btn-custom {
-  background-color: #343a40;
-  color: #fff;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
 }
 
 .btn-custom:hover {
-  background-color: #495057;
-  color: #fff;
+  background-color: var(--btn-hover-bg);
+  color: var(--btn-text);
 }
 
 </style>
@@ -127,40 +156,37 @@ h1.display-4 {
         <%= link_to tag.name.capitalize, tag_path(tag), class: "badge bg-primary" %>
       <% end %>
       <br>
-      
     </div>
   </div>
+  
   <div>
     <h2>Comment Section</h2>
-<p><strong>Total Comments:</strong> <%= @comments.count %></p>
-  <div id="comments">
-    
-    <% @comments.reverse_each do |comment| %>
-      <div class="card mb-3">
-        <div class="card-body">
-          <p class="card-text"><strong><%= comment.name %>:</strong> <%= comment.body %></p>
-          <p class="text-muted">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+    <p><strong>Total Comments:</strong> <%= @comments.count %></p>
+    <div id="comments">
+      <% @comments.reverse_each do |comment| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <p class="card-text"><strong><%= comment.name %>:</strong> <%= comment.body %></p>
+            <p class="text-muted">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+          </div>
         </div>
-      </div>
+      <% end %>
+    </div>
+
+    <% if user_signed_in? %>
+      <%= form_for([@nested_post, @nested_post.comments.build]) do |f| %>
+        <div class="mb-3">
+          <%= f.label :name, "User name:", class: "form-label" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :body, "Leave a comment!", class: "form-label" %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.submit 'Submit', class: "btn btn-primary" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
-
-  <% if user_signed_in? %>
-    
-    <%= form_for([@nested_post, @nested_post.comments.build]) do |f| %>
-      <div class="mb-3">
-        <%= f.label :name, "User name:", class: "form-label" %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-      <div class="mb-3">
-        <%= f.label :body, "Leave a comment!", class: "form-label" %>
-        <%= f.text_area :body, class: "form-control" %>
-      </div>
-      <div class="mb-3">
-        <%= f.submit 'Submit', class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  <% end %>
 </div>
-</div>
-
