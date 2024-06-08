@@ -80,8 +80,15 @@
 
       <% if user_signed_in? && (@nested_post.user == current_user || current_user.admin?) %>
         <div class="d-flex d-flex justify-content-start">
-          <%= button_to 'Edit', edit_post_nested_post_path(@nested_post.post, @nested_post), method: :get, class: "btn btn-primary" %>
-          <%= button_to 'Delete', post_nested_post_path(@nested_post.post, @nested_post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <%= button_to edit_post_nested_post_path(@nested_post.post, @nested_post), method: :get, class: "btn btn-primary" do %>
+          <i class="bi bi-pen-fill"></i>
+          
+          <% end %>
+          
+          <%= button_to post_nested_post_path(@nested_post.post, @nested_post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do%>
+          <i class="bi bi-trash-fill"></i>
+          <% end %>
+          
         </div>
       <% end %>
 
@@ -89,9 +96,15 @@
       <p><strong>Likes:</strong> <%= @nested_post.likes.count %></p>
       <% if user_signed_in? %>
         <% if @nested_post.likes.where(user_id: current_user.id).exists? %>
-          <%= button_to 'Unlike', post_nested_post_like_path(@nested_post.post, @nested_post, @nested_post.likes.find_by(user_id: current_user.id)), method: :delete, class: "btn btn-warning" %>
+          <%= button_to  post_nested_post_like_path(@nested_post.post, @nested_post, @nested_post.likes.find_by(user_id: current_user.id)), method: :delete, class: "btn btn-danger" do%>
+          <i class="bi bi-hand-thumbs-down-fill"></i>
+          <% end %>
+          
         <% else %>
-          <%= button_to 'Like', post_nested_post_likes_path(@nested_post.post, @nested_post), method: :post, class: "btn btn-success" %>
+          <%= button_to post_nested_post_likes_path(@nested_post.post, @nested_post), method: :post, class: "btn btn-success" do%>
+          <i class="bi bi-hand-thumbs-up-fill"></i>
+          <% end %>
+          
         <% end %>
       <% end %>
       <hr>
