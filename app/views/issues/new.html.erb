@@ -1,0 +1,15 @@
+<h1>Create a Jira Issue</h1>
+
+<%= form_with url: create_jira_issue_path, method: :post do |f| %>
+  <div>
+    <%= f.label :summary %>
+    <%= f.text_field :summary %>
+  </div>
+  <div>
+    <%= f.label :priority %>
+    <%= f.select :priority, options_for_select(['High', 'Average', 'Low']) %>
+  </div>
+  <div>
+    <%= f.submit "Create Issue" %>
+  </div>
+<% end %>

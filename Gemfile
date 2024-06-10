@@ -37,6 +37,7 @@ gem "jbuilder"
 gem 'devise', '~> 4.9', '>= 4.9.3'
 gem 'acts-as-taggable-on'
 gem 'kramdown'
+gem 'jira-ruby', require: 'jira-ruby'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 

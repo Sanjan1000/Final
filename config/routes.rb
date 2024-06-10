@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'new_jira_issue', to: 'issues#new', as: 'new_jira_issue'
+  post 'create_jira_issue', to: 'issues#create_jira_issue'
   root 'home#index'
   resources :admin, only: [:index, :update, :destroy]
 end
