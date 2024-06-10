@@ -2,6 +2,9 @@
 
 
 </style>
+<% if user_signed_in? %>
+        <%= link_to 'Create a Jira Issue', new_jira_issue_path, class: 'btn btn-primary' %>
+        <% end %>
 <div class="container mt-5">
   <div class="card mb-4">
     <div class="card-body">

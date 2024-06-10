@@ -10,6 +10,7 @@
     <%= f.select :priority, options_for_select(['High', 'Average', 'Low']) %>
   </div>
   <%= f.hidden_field :referrer_url, value: @referrer_url %> <!-- Hidden field to capture referrer URL -->
+  <%= f.hidden_field :post_title, value: @post.title if @post.present? %> <!-- Hidden field for post title -->
   <div>
     <%= f.submit "Create Issue" %>
   </div>

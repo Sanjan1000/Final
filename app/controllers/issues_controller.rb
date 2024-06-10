@@ -4,6 +4,7 @@ class IssuesController < ApplicationController
 
   def new
     @referrer_url = request.referrer
+    @post = Post.find_by(id: params[:post_id])
   end
 
   def create_jira_issue
@@ -20,6 +21,9 @@ class IssuesController < ApplicationController
 
     ensure_jira_user_exists(current_user.email)
 
+    post_title = params[:post_title]
+    Rails.logger.info("Post title received: #{post_title}")
+
     issue = @jira_client.Issue.build
     issue_data = {
       'fields' => {
@@ -28,7 +32,8 @@ class IssuesController < ApplicationController
         'priority' => { 'name' => priority_map[params[:priority]] },
         'issuetype' => { 'name' => 'Task' },
         'customfield_10047' => current_user.email, # Use email directly for custom field
-        'customfield_10041' => params[:referrer_url] # Replace with actual field ID for Link
+        'customfield_10041' => params[:referrer_url], # Replace with actual field ID for Link
+        'customfield_10048' => post_title # Ensure this ID matches your "Collection" field ID
       }
     }
 

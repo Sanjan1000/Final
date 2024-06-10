@@ -1,3 +1,6 @@
+<% if user_signed_in? %>
+        <%= link_to 'Create a Jira Issue', new_jira_issue_path, class: 'btn btn-primary' %>
+        <% end %>
 <h2>User management for <%=current_user.email%></h2>
 <%=link_to new_post_path do%>
 

@@ -62,9 +62,10 @@ html {
     <% end %></a>
         </li>
         
+        
         <li class="nav-item">
           <a class="nav-link" href="#"> <% if user_signed_in? %>
-          <%= link_to 'Create a Jira Issue', new_jira_issue_path, class: 'btn btn-primary' %>
+          
       <%= link_to 'User management', posts_path , :class => "nav-link active"%> 
     <% end %>
     </a>
