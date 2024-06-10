@@ -3,5 +3,5 @@ JIRA_OPTIONS = {
   context_path: '',
   auth_type: :basic,
   username: 'm.a.b.siddique.sanjan@gmail.com',  # replace with your Jira email
-  password: 'ATATT3xFfGF0iu0BORYh2zRPCUyuRiPzMxqHwciu1SLXnu0-tXbCsaUT896E6BFnAwguv3w69Gq6WO4py6FanBsWAEaZEgBoxIoykS9MpWwAKS-GYpYB5nE97Bwkz3MbFPzqNA4pgEuOhy6S5tdVPSqE9gQuzZ5g927cKqYYhLOWywbbUwsF8ss=84CAEB53'           # replace with your Jira API token
+  password: 'ATATT3xFfGF02VvldRcLcAmXCa6RtfsfCQiYSnRSVgCGF07bkntrwPApfRw4HZqZ6vE2NRNm0PcGCaPblRZ1jxJu4RWQJNPPkr79YiHIdyVrMUWydXS6bkxzcVf8jrgAwFNwJZxxrp-MzG7jEH9QpmJDO8WV867QDl06cgkTEhINu8CxfaWbbOM=67AF04AB'           # replace with your Jira API token
 }

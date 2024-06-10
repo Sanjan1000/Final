@@ -9,6 +9,7 @@
     <%= f.label :priority %>
     <%= f.select :priority, options_for_select(['High', 'Average', 'Low']) %>
   </div>
+  <%= f.hidden_field :referrer_url, value: @referrer_url %> <!-- Hidden field to capture referrer URL -->
   <div>
     <%= f.submit "Create Issue" %>
   </div>
