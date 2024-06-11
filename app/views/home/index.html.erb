@@ -1,6 +1,8 @@
 <% if user_signed_in? %>
-        <%= link_to 'Create a Jira Issue', new_jira_issue_path, class: 'btn btn-primary' %>
-        <% end %>
+  <%= link_to 'Create a Jira Issue', new_jira_issue_path, class: 'btn btn-primary', style: 'display: inline-block; width: 200px;' %>
+<% end %>
+
+
 <% if user_signed_in?%>
   <h1>Welcome to the Home Page <%=current_user.email%></h1>
 <%else%>

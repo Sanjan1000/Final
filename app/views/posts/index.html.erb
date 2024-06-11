@@ -1,5 +1,93 @@
+<style>
+  form {
+  margin-top: 2rem; /* 5 in Bootstrap's mt-5 is 3rem, adjusting to 2rem for closer spacing */
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control, .form-select {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn:focus, .btn.focus {
+  color: #fff;
+  background-color: #0056b3;
+  border-color: #004085;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-warning {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.card {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+}
+
+.card-header {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  padding: 0.5rem;
+}
+</style>
 <% if user_signed_in? %>
-  <%= link_to 'Create a Jira Issue', new_jira_issue_path, class: 'btn btn-primary' %>
+  <%= link_to 'Create a Jira Issue', new_jira_issue_path, class: 'btn btn-primary', style: 'display: inline-block; width: 200px;' %>
 <% end %>
 
 <h2>User management for <%= current_user.email %></h2>
@@ -26,17 +114,24 @@
   <ul>
     <% @jira_tickets.each do |ticket| %>
       <li>
-        <a href="<%= "#{JIRA_OPTIONS[:site]}/browse/#{ticket['key']}" %>" target="_blank">
-          <%= ticket['key'] %>
-        </a>
-        - <strong>Status:</strong> <%= ticket['fields']['status']['name'] %>
+        <div class="card">
+          <div class="card-header">
+            <a href="<%= "#{JIRA_OPTIONS[:site]}/browse/#{ticket['key']}" %>" target="_blank">
+              <%= ticket['key'] %>
+            </a>
+          </div>
+          <div class="card-body">
+            <strong>Status:</strong> <%= ticket['fields']['status']['name'] %>
+          </div>
+        </div>
       </li>
     <% end %>
   </ul>
 <% else %>
   <p>No Jira tickets found for your email.</p>
 <% end %>
-
+<br>
+<br>
 <p>
   Your API Token: <%= current_user.api_token %>
   <br>
