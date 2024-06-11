@@ -30,6 +30,19 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      get 'posts/index'
+      resources :posts, only: [:index]
+    end
+  end
+  
+  resources :posts, only: [] do
+    member do
+      get :generate_api_token
+    end
+  end
+
   get 'new_jira_issue', to: 'issues#new', as: 'new_jira_issue'
   post 'create_jira_issue', to: 'issues#create_jira_issue'
   root 'home#index'

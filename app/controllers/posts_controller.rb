@@ -24,6 +24,10 @@ class PostsController < ApplicationController
       render 'new'
     end
   end
+  def generate_api_token
+    current_user.regenerate_api_token
+    redirect_to request.referer, notice: 'API token regenerated.'
+  end
 
   def edit
   end

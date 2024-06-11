@@ -12,7 +12,7 @@ class JiraService
     uri = URI(API_URL)
     query = {
       jql: "cf[10047] ~ \"#{@user.email}\"",
-      fields: 'summary,status,issuetype,priority,customfield_10050'
+      fields: 'summary,status,issuetype,priority'
     }
     uri.query = URI.encode_www_form(query)
 
