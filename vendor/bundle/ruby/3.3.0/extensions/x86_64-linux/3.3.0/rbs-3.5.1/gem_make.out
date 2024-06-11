@@ -1,0 +1,27 @@
+current directory: /home/sanjan1000/This_PC/Internship/Final/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.1/ext/rbs_extension
+/home/sanjan1000/.rbenv/versions/3.3.1/bin/ruby extconf.rb
+checking for whether -std=gnu99 is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /home/sanjan1000/This_PC/Internship/Final/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.1/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240612-385934-njhh9n sitelibdir\=./.gem.20240612-385934-njhh9n clean
+
+current directory: /home/sanjan1000/This_PC/Internship/Final/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.1/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240612-385934-njhh9n sitelibdir\=./.gem.20240612-385934-njhh9n
+compiling constants.c
+compiling lexer.c
+compiling lexstate.c
+compiling location.c
+compiling main.c
+compiling parser.c
+compiling parserstate.c
+compiling ruby_objs.c
+compiling unescape.c
+linking shared-object rbs_extension.so
+
+current directory: /home/sanjan1000/This_PC/Internship/Final/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.1/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240612-385934-njhh9n sitelibdir\=./.gem.20240612-385934-njhh9n install
+/usr/bin/install -c -m 0755 rbs_extension.so ./.gem.20240612-385934-njhh9n
+
+current directory: /home/sanjan1000/This_PC/Internship/Final/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.1/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240612-385934-njhh9n sitelibdir\=./.gem.20240612-385934-njhh9n clean
