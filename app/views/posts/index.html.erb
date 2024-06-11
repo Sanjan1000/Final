@@ -25,11 +25,13 @@
 <% if @jira_tickets.any? %>
   <ul>
     <% @jira_tickets.each do |ticket| %>
+      <% key = ticket['key'] %>
+      <% custom_field = ticket.dig('fields', 'customfield_10050', 'value') %>
       <li>
-        <a href="<%= "#{JIRA_OPTIONS[:site]}/browse/#{ticket['key']}" %>" target="_blank">
-          <%= ticket['key'] %>
+        <a href="<%= "#{JIRA_OPTIONS[:site]}/browse/#{key}" %>" target="_blank">
+          <%= key %>
         </a>
-        - <strong>Status:</strong> <%= ticket['fields']['status']['name'] %>
+        - <strong>Status:</strong> <%= custom_field || 'N/A' %>
       </li>
     <% end %>
   </ul>
