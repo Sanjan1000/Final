@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.admin? ? Post.all.order("created_at DESC") : current_user.posts.order("created_at DESC")
+    @jira_tickets = JiraService.new(current_user).fetch_tickets
   end
 
   def show

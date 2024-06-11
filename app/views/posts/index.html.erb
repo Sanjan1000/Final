@@ -1,20 +1,38 @@
 <% if user_signed_in? %>
-        <%= link_to 'Create a Jira Issue', new_jira_issue_path, class: 'btn btn-primary' %>
-        <% end %>
-<h2>User management for <%=current_user.email%></h2>
-<%=link_to new_post_path do%>
+  <%= link_to 'Create a Jira Issue', new_jira_issue_path, class: 'btn btn-primary' %>
+<% end %>
 
-<span class="badge bg-success"><i class="bi bi-collection"> New Collections</i></span>
+<h2>User management for <%= current_user.email %></h2>
+
+<%= link_to new_post_path do %>
+  <span class="badge bg-success"><i class="bi bi-collection"> New Collections</i></span>
 <% end %>
 <br>
 
 <div class="d-inline-flex p-2 card border-0" style="max-width: 30rem;">
   <div class="card-header">List of Collection: </div>
   <div class="card-body">
-    <h4 class="card-title"><% @posts.each do |post| %>
-<h2> <i class="bi bi-collection-fill"></i> <%= link_to post.title, post , style: "text-decoration: none;"%></h2>
-<br>
-<% end %></h4>
-    
+    <h4 class="card-title">
+      <% @posts.each do |post| %>
+        <h2><i class="bi bi-collection-fill"></i> <%= link_to post.title, post, style: "text-decoration: none;" %></h2>
+        <br>
+      <% end %>
+    </h4>
   </div>
 </div>
+
+<h2>Your Jira Tickets</h2>
+<% if @jira_tickets.any? %>
+  <ul>
+    <% @jira_tickets.each do |ticket| %>
+      <li>
+        <a href="<%= "#{JIRA_OPTIONS[:site]}/browse/#{ticket['key']}" %>" target="_blank">
+          <%= ticket['key'] %>
+        </a>
+        - <strong>Status:</strong> <%= ticket['fields']['status']['name'] %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No Jira tickets found for your email.</p>
+<% end %>
